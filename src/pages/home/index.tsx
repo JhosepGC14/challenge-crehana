@@ -7,7 +7,6 @@ const HomePage = () => {
     <Layout>
       <section>
         <ContainerSearch/>
-        <ListCountries/>
       </section>
     </Layout>
   );

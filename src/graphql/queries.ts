@@ -1,28 +1,43 @@
 import { gql } from "@apollo/client";
 
-export const ALL_PERSONS = gql`
+export const ALL_COUNTRIES = gql`
   query {
-    allPersons {
-      id
+    countries {
       name
-      phone
-      address {
-        street
-        city
+      code
+      currency
+      languages {
+        name
+      }
+      continent {
+        code
+        name
       }
     }
   }
 `;
 
-export const FIND_PERSON = gql`
-  query findPersonByName($nameToSearch: String!) {
-    findPerson(name: $nameToSearch) {
+export const ALL_CONTINENTS = gql`
+  query {
+    continents {
+      code
       name
-      phone
-      id
-      address {
-        street
-        city
+    }
+  }
+`;
+
+export const FIND_BY_CONTINENT = gql`
+  query filterCountriesByContinent($codeContinent: String) {
+    countries(filter: { continent: { eq: $codeContinent } }) {
+      name
+      code
+      currency
+      languages {
+        name
+      }
+      continent {
+        code
+        name
       }
     }
   }

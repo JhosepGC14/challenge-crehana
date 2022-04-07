@@ -43,6 +43,7 @@ const SelectCustom = ({
           value={value}
           onChange={handleChange}
           label={label}
+          defaultValue=""
         >
           <MenuItem value="">
             <em>Ninguno</em>
