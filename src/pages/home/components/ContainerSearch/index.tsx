@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
+import { useState } from "react";
+import { Button, Grid } from "@mui/material";
 
 //components
 import ListCountries from "../ListCountries";
@@ -7,10 +7,7 @@ import TextInput from "../../../../components/Inputs/TextInputs";
 import SelectCustom from "../../../../components/Inputs/SelectInputs";
 
 //hooks
-import {
-  useContinents,
-  useFindByContinent,
-} from "../../../../graphql/hooks/custom-hooks";
+import { useContinents } from "../../../../graphql/hooks/custom-hooks";
 
 //interfaces
 import { ALL_CURRENCIES } from "../../../../utilities/dataCurrencies";
@@ -18,7 +15,6 @@ import { OptionSelect } from "../../../../models/OptionsSelect.models";
 
 const ContainerSearch = () => {
   const optionsContinents = useContinents();
-
   const [optionsCurrencies] = useState<OptionSelect[]>(ALL_CURRENCIES);
   const [formFilter, setFormFilter] = useState({
     search: "",
@@ -33,7 +29,13 @@ const ContainerSearch = () => {
     });
   };
 
- 
+  const handleResetFilters = () => {
+    setFormFilter({
+      search: "",
+      continent: "",
+      currency: "",
+    });
+  };
 
   return (
     <>
@@ -64,10 +66,14 @@ const ContainerSearch = () => {
             value={formFilter.currency}
           />
         </Grid>
+        <Grid container item md={12} justifyContent="flex-end">
+          <Button onClick={handleResetFilters}>Borrar Filtros</Button>
+        </Grid>
       </Grid>
       <ListCountries
         textSearch={formFilter.search}
         valueContinent={formFilter.continent}
+        valueCurrency={formFilter.currency}
       />
     </>
   );

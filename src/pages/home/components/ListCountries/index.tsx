@@ -1,3 +1,4 @@
+//components
 import {
   Table,
   TableBody,
@@ -10,54 +11,21 @@ import {
   Typography,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useNavigate } from "react-router-dom";
-import {
-  useCountries,
-  useFindByContinent,
-} from "../../../../graphql/hooks/custom-hooks";
-import { useState, useEffect } from "react";
-import { Country } from "../../../../models/Countries.models";
+
+//hooks
+import { useListCountries } from "../../../../hooks/useListCountries";
 
 interface ListCountiresProps {
   textSearch: string;
   valueContinent: string;
+  valueCurrency: string;
 }
 
-const ListCountries = ({ textSearch, valueContinent }: ListCountiresProps) => {
-  const navigate = useNavigate();
-  const result = useCountries();
-  const [filterCountriesByContinent, listCountriesFiltered] = useFindByContinent();
-  const [listCountries, setListCountries] = useState<Country[]>([]);
-
-  //Funcion para filtrar los datos.
-  const handleSearchByContinent = (value: string) => {
-    filterCountriesByContinent({
-      variables: {
-        codeContinent: value,
-      },
-    });
-  };
-
-  //Escucha cualquier cambio del valor del combo Continente
-  useEffect(() => {
-    if (valueContinent !== "") {
-      handleSearchByContinent(valueContinent);
-    }
-  }, [valueContinent]);
-
-  //Escucha cualquier cambio del valor filtrado por continente
-  useEffect(() => {
-    if (listCountriesFiltered.data) {
-      setListCountries(listCountriesFiltered.data.countries);
-    }
-  }, [listCountriesFiltered.data]);
-
-  //Setea el valor inicial de la lista de todos los paises
-  useEffect(() => {
-    if (result) {
-      setListCountries(result.countries);
-    }
-  }, [result]);
+const ListCountries = ({ textSearch, valueContinent, valueCurrency }: ListCountiresProps) => {
+  const { listCountries, navigate } = useListCountries(
+    valueContinent,
+    valueCurrency
+  );
 
   return (
     <>

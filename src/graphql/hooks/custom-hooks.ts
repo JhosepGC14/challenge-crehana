@@ -1,5 +1,11 @@
 import { useLazyQuery, useQuery } from "@apollo/client";
-import { ALL_COUNTRIES, ALL_CONTINENTS, FIND_BY_CONTINENT } from "../queries";
+import {
+  ALL_COUNTRIES,
+  ALL_CONTINENTS,
+  FIND_BY_CONTINENT,
+  FIND_BY_CURRENCY,
+  DETAIL_COUNTRY,
+} from "../queries";
 import { ContinentsResult } from "../../models/Continent.models";
 import { mutationToOptionSelect } from "../../adapters/options-adapter";
 import { ListCountries } from "../../models/Countries.models";
@@ -21,6 +27,15 @@ export const useContinents = () => {
 
 export const useFindByContinent = () => {
   const resultados = useLazyQuery(FIND_BY_CONTINENT);
-  console.log("datos en el useFindByContent : ", resultados);
   return resultados;
+};
+
+export const useFindByCurrency = () => {
+  const resultados = useLazyQuery(FIND_BY_CURRENCY);
+  return resultados;
+};
+
+export const useGetDetailCountry = () => {
+  const result = useLazyQuery(DETAIL_COUNTRY);
+  return result;
 };

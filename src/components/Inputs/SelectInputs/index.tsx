@@ -30,11 +30,7 @@ const SelectCustom = ({
 
   return (
     <>
-      <FormControl
-        variant="filled"
-        fullWidth
-        // error={errors[name] ? true : false}
-      >
+      <FormControl variant="filled" fullWidth>
         <InputLabel id={`label-${name}`}>{label}</InputLabel>
         <Select
           labelId={`label-${name}`}
