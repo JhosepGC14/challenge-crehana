@@ -22,10 +22,8 @@ interface ListCountiresProps {
 }
 
 const ListCountries = ({ textSearch, valueContinent, valueCurrency }: ListCountiresProps) => {
-  const { listCountries, navigate } = useListCountries(
-    valueContinent,
-    valueCurrency
-  );
+  //custom hooks
+  const { listCountries, navigate } = useListCountries(valueContinent, valueCurrency);
 
   return (
     <>

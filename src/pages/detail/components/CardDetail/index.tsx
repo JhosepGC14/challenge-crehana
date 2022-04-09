@@ -5,10 +5,10 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
-import { useDetailCountry } from '../../../../hooks/useDetailCountry';
+import { useDetailCountry } from "../../../../hooks/useDetailCountry";
 
 const CardDetail = () => {
-  const { navigate, params, data } = useDetailCountry();
+  const { navigate, data } = useDetailCountry();
 
   return (
     <Paper elevation={3}>

@@ -14,6 +14,8 @@ import { ALL_CURRENCIES } from "../../../../utilities/dataCurrencies";
 import { OptionSelect } from "../../../../models/OptionsSelect.models";
 
 const ContainerSearch = () => {
+
+  //hooks
   const optionsContinents = useContinents();
   const [optionsCurrencies] = useState<OptionSelect[]>(ALL_CURRENCIES);
   const [formFilter, setFormFilter] = useState({
@@ -22,6 +24,7 @@ const ContainerSearch = () => {
     currency: "",
   });
 
+  //handlechange for inputs
   const handleChange = ({ name, value }: any) => {
     setFormFilter({
       ...formFilter,
@@ -29,6 +32,7 @@ const ContainerSearch = () => {
     });
   };
 
+  //handle reset
   const handleResetFilters = () => {
     setFormFilter({
       search: "",

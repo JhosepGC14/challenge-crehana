@@ -1,6 +1,5 @@
 import {
   FormControl,
-  FormHelperText,
   InputLabel,
   MenuItem,
   Select,
@@ -11,7 +10,6 @@ interface SelectCustomProps {
   name?: string;
   label?: string;
   value?: boolean | string | number;
-  errors?: any[];
   onChange: (target: any) => void;
   options: OptionSelect[];
 }
@@ -20,7 +18,6 @@ const SelectCustom = ({
   name,
   label,
   value,
-  errors,
   onChange,
   options = [],
 }: SelectCustomProps) => {
@@ -50,7 +47,6 @@ const SelectCustom = ({
             </MenuItem>
           ))}
         </Select>
-        {/* <FormHelperText>{errors[name] ? errors[name] : ""}</FormHelperText> */}
       </FormControl>
     </>
   );

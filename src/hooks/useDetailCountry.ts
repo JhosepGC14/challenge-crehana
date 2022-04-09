@@ -12,5 +12,5 @@ export const useDetailCountry = () => {
       getDetailCountry({ variables: { codeCountry: params.countryId } });
   }, [params]);
 
-  return { navigate, params, data };
+  return { navigate, data };
 };

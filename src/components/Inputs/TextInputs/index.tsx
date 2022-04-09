@@ -5,7 +5,6 @@ interface TextInputProps {
   name?: string;
   label?: string;
   value?: boolean | string | number;
-  errors?: any[];
   onChange: (target: any) => void;
   type?: string;
 }
@@ -15,7 +14,6 @@ const TextInput = ({
   name,
   label,
   value,
-  errors,
   onChange,
   type = "text",
 }: TextInputProps) => {
@@ -35,8 +33,6 @@ const TextInput = ({
         fullWidth={true}
         value={value}
         onChange={handleChange}
-        // error={errors[name!] ? true : false}
-        // helperText={errors[name!] && `${errors[name!]}`}
       />
     </>
   );
