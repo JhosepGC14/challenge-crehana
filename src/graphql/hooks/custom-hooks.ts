@@ -12,7 +12,6 @@ import { ListCountries } from "../../models/Countries.models";
 
 export const useCountries = () => {
   const result = useQuery<ListCountries>(ALL_COUNTRIES);
-  console.log("result : ", result);
   return result.data;
 };
 

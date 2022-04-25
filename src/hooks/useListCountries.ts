@@ -65,5 +65,12 @@ export const useListCountries = (valueContinent: string, valueCurrency:string) =
     }
   }, [result]);
 
+  //Setea el valor inicial de la lista de todos los paises
+  useEffect(() => {
+    if (valueContinent === "" && valueContinent === "" && result) {
+      setListCountries(result.countries);
+    }
+  }, [valueCurrency, valueContinent]);
+
   return { listCountries, navigate };
 };
